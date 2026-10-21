@@ -51,14 +51,14 @@ if [ -f "$CONFIG_INI" ]; then
         printf '\ndisk.dataPartition.size=4096M\n' >> "$CONFIG_INI"
     fi
 
-    if grep -q '^hw.keyboard=' "$CONFIG_INI"; then
-        sed -i 's/^hw.keyboard=.*/hw.keyboard = yes/' "$CONFIG_INI"
+    if grep -q '^hw\.keyboard[[:space:]]*=' "$CONFIG_INI"; then
+        sed -i 's/^hw\.keyboard[[:space:]]*=.*/hw.keyboard = yes/' "$CONFIG_INI"
     else
         printf '\nhw.keyboard = yes\n' >> "$CONFIG_INI"
     fi
 
-    if grep -q '^hw.keyboard.charmap=' "$CONFIG_INI"; then
-        sed -i 's/^hw.keyboard.charmap=.*/hw.keyboard.charmap = qwerty2/' "$CONFIG_INI"
+    if grep -q '^hw\.keyboard\.charmap[[:space:]]*=' "$CONFIG_INI"; then
+        sed -i 's/^hw\.keyboard\.charmap[[:space:]]*=.*/hw.keyboard.charmap = qwerty2/' "$CONFIG_INI"
     else
         printf 'hw.keyboard.charmap = qwerty2\n' >> "$CONFIG_INI"
     fi
