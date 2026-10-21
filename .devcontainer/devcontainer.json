@@ -1,0 +1,4 @@
+{
+  "name": "Android 11 Google Play",
+  "postStartCommand": "bash -lc './emulator/manage-android.sh start'"
+}
