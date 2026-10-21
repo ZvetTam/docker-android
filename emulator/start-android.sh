@@ -45,11 +45,8 @@ fi
 
 CONFIG_INI="$AVD_DIR/config.ini"
 if [ -f "$CONFIG_INI" ]; then
-    if grep -q '^disk.dataPartition.size=' "$CONFIG_INI"; then
-        sed -i 's/^disk.dataPartition.size=.*/disk.dataPartition.size=4096M/' "$CONFIG_INI"
-    else
-        printf '\ndisk.dataPartition.size=4096M\n' >> "$CONFIG_INI"
-    fi
+    sed -i '/^[[:space:]]*disk\.dataPartition\.size[[:space:]]*=/d' "$CONFIG_INI"
+    printf '\ndisk.dataPartition.size=4096M\n' >> "$CONFIG_INI"
 
     if grep -q '^hw\.keyboard[[:space:]]*=' "$CONFIG_INI"; then
         sed -i 's/^hw\.keyboard[[:space:]]*=.*/hw.keyboard = yes/' "$CONFIG_INI"
